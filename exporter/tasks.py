@@ -944,11 +944,11 @@ class OrgEmailOptInTask(OrgTask, DjangoAdminTask):
     NAME = 'email_opt_in'
     EXT = 'csv'
     COMMAND = 'email_opt_in_list'
-    ARGS = '{all_organizations} --courses={comma_sep_courses} --email-optin-chunk-size=10000'
+    ARGS = '{all_organizations} --courses={comma_sep_courses}'
     OUT = '{filename}'
     CMD = """
     sudo -E -u {django_user} {variables}
-      {django_admin} {command}
+      {django_admin} lms {command}
       --settings={django_settings}
       --pythonpath={django_pythonpath}
       {output}
