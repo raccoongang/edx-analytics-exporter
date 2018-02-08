@@ -34,7 +34,7 @@ def test_org_email_opt_in_task(mock_execute_shell):
 
     command = tasks.OrgEmailOptInTask.run(filename, dry_run, **kwargs)
 
-    assert command.endswith('the-filename the-org the-second-org the-third-org --courses=course-1,course-2 --email-optin-chunk-size=10000')
+    assert command.endswith('the-filename the-org the-second-org the-third-org --courses=course-1,course-2')
     assert 'email_opt_in_list' in command
     expected_kwargs = deepcopy(kwargs)
     expected_kwargs['all_organizations'] = 'the-org the-second-org the-third-org'
