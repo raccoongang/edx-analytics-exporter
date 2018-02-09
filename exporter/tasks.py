@@ -268,6 +268,8 @@ class CopyS3FileTask(Task):
                 key=s3_marker_filename
             )
 
+            marker_command = "ls"
+
             source_command = head_command.format(
                 bucket=kwargs['pipeline_bucket'],
                 key=s3_source_filename
