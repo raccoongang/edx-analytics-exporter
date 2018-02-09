@@ -11,7 +11,6 @@ import yaml
 
 from exporter.util import merge, filter_keys
 
-
 WORK_SUBDIR = 'course-data'
 
 log = logging.getLogger(__name__)
@@ -25,6 +24,9 @@ def setup(doc, argv=None):
 
     return _get_config(program_options)
 
+def ensure_filename_directory_exists(work_dir):
+    if not os.path.isdir(work_dir):
+        os.mkdir(work_dir)
 
 def _get_config(program_options):
     with open(program_options['<config>']) as f:
@@ -42,7 +44,9 @@ def _get_config(program_options):
     # modify work directory for this command
     work_dir = os.path.join(config['values']['work_dir'], WORK_SUBDIR)
     config['values']['work_dir'] = work_dir
-
+    
+    ensure_filename_directory_exists(work_dir)
+    
     return config
 
 

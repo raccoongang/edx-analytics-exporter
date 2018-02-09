@@ -163,7 +163,7 @@ class MongoTask(Task):
       --password "{mongo_password}"
       --collection {mongo_collection}
       --query '{query}'
-      --slaveOk
+      --slaveOk=1
       --out {filename}
       >&2
     """
@@ -909,7 +909,7 @@ class ForumsTask(CourseTask, MongoTask):
 class FindAllCoursesTask(DjangoAdminTask):
     NAME = 'courses'
     EXT = 'txt'
-    COMMAND = 'dump_course_ids'
+    COMMAND = 'lms dump_course_ids'
     ARGS = ''
     OUT = '{filename}'
 
@@ -917,7 +917,7 @@ class FindAllCoursesTask(DjangoAdminTask):
 class CourseStructureTask(CourseTask, DjangoAdminTask):
     NAME = 'course_structure'
     EXT = 'json'
-    COMMAND = 'dump_course_structure'
+    COMMAND = 'lms dump_course_structure'
     ARGS = '{course}'
     OUT = '{filename}'
 
@@ -925,7 +925,7 @@ class CourseStructureTask(CourseTask, DjangoAdminTask):
 class CourseContentTask(CourseTask, DjangoAdminTask):
     NAME = 'course'
     EXT = 'xml.tar.gz'
-    COMMAND = 'export_olx'
+    COMMAND = 'cms export_olx'
     ARGS = '{course}'
     OUT = '{filename}'
     VARS = 'CONFIG_ROOT={django_config} SERVICE_VARIANT=cms'
