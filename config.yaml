@@ -1,0 +1,36 @@
+defaults:
+  auth_file: /path/to/the/auth/file
+  gpg_master_key: secring.gpg
+  gpg_keys: /edx/app/edx-analytics-exporter/gpg/.gnupg/
+#  work_dir: /tmp
+  external_prefix: ''
+  output_bucket: edx-analytics-exporter
+  pipeline_bucket: xxx-insights-edxanalytics
+  output_prefix: ''
+  se_bucket: the-stack-exchange-bucket
+  django_admin: /edx/app/edxapp/venvs/edxapp/bin/python /edx/app/edxapp/edx-platform/manage.py
+  django_pythonpath: /edx/app/edxapp/venvs/edxapp/
+  django_user: root
+  django_settings: aws
+  django_cms_settings: aws
+  django_database: edxapp
+  mongo_collection: modulestore.structures
+  sql_user: edxapp001
+  sql_db: edxapp
+  sql_password: password 
+  monitor: false
+  graphite_host: localhost
+  graphite_port: 8125
+  graphite_prefix: edx.analytics.research
+  mongo_user: edxapp
+  mongo_password: password
+
+environments:
+  prod:
+#    dry_run: True
+    django_config: /edx/app/edxapp/
+    mongo_host: 127.0.0.1 --port 27017
+    mongo_db: edxapp
+    name: prod
+    sql_host: 127.0.0.1
+
