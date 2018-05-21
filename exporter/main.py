@@ -244,11 +244,12 @@ def upload_data(config, filepath):
     bucket = config['output_bucket']
     prefix = config['output_prefix'] or ''
     name = os.path.basename(filepath)
+    os.system("/usr/bin/gpg2 --output {0}.gpg --encrypt --always-trust --recipient {1} {0}".format(filepath, config['recipients'][0]))
     target = 's3://{bucket}/{prefix}{name}'.format(bucket=bucket, prefix=prefix, name=name)
 
-    log.info('Uploading file %s to %s', filepath, target)
+    log.info('Uploading file %s.gpg to %s.gpg', filepath, target)
 
-    cmd = 'aws s3 cp --acl bucket-owner-full-control {filepath} {target}'
+    cmd = 'aws s3 cp --acl bucket-owner-full-control {filepath}.gpg {target}.gpg'
     cmd = cmd.format(filepath=filepath, target=target)
 
     if not config['dry_run']:
