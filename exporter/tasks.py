@@ -165,7 +165,7 @@ class MongoTask(Task):
       --query '{query}'
       --slaveOk=1
       --out {filename}
-      --authenticationDatabase admin
+      --authenticationDatabase cs_comments_service
       >&2
     """
 
