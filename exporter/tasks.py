@@ -325,9 +325,23 @@ class UserIDMapTask(CourseTask, SQLTask):
     """
 
 
-class StudentModuleTask(CourseTask, CopyS3FileTask):
+class StudentModuleTask(CourseTask, SQLTask):
     NAME = 'courseware_studentmodule'
-    EXT = 'sql'
+    SQL = """
+    SELECT module_type,
+           module_id,
+           student_id,
+           state,
+           grade,
+           created,
+           modified, 
+           max_grade,
+           done,
+           course_id
+    FROM courseware_studentmodule
+    WHERE course_id='{course}'
+    ORDER BY student_id
+    """
 
 
 class TeamsTask(CourseTask, SQLTask):
