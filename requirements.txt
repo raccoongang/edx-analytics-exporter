@@ -1,5 +1,5 @@
 # Application
-awscli
+awscli==1.16.35
 docopt
 edx-ccx-keys
 edx-opaque-keys
