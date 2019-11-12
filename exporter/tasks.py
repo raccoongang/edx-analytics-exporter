@@ -163,9 +163,10 @@ class MongoTask(Task):
       --password "{mongo_password}"
       --collection {mongo_collection}
       --query '{query}'
-      --slaveOk=1
+      --slaveOk
+      --ssl
       --out {filename}
-      --authenticationDatabase cs_comments_service
+      --authenticationDatabase admin
       >&2
     """
 
